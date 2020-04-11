@@ -1,0 +1,5 @@
+name: Owoifier
+main: xyz.nkomarn.owoifier.Owoifier
+version: 1.0
+author: Tech I guess
+api-version: 1.13
