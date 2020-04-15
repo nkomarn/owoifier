@@ -1,5 +1,7 @@
 name: Owoifier
+description: owoifier owoifies your server!
 main: xyz.nkomarn.owoifier.Owoifier
-version: 1.0
-author: Tech I guess
+version: 1.2
+author: TechToolbox (@nkomarn)
+website: https://nkomarn.xyz
 api-version: 1.13
