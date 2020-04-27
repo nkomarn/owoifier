@@ -1,5 +1,6 @@
 package xyz.nkomarn.owoifier;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
@@ -25,16 +26,22 @@ public class Owoifier extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onAsyncChat(AsyncPlayerChatEvent event) {
-        final Random random = new Random();
-        final String expression = expressions[random.nextInt(expressions.length)];
-        event.setMessage(Owoification.owoify(event.getMessage()) + " " + expression);
+        final Player p = event.getPlayer();
+        if((p.hasPermission("owoifier.use.chat") && getConfig().getBoolean("use_perms"))||!getConfig().getBoolean("use_perms")) {
+            final Random random = new Random();
+            final String expression = expressions[random.nextInt(expressions.length)];
+            event.setMessage(Owoification.owoify(event.getMessage()) + " " + expression);
+        }
     }
 
     @EventHandler
     public void onSignChange(SignChangeEvent event) {
-        int lineNumber = 0;
-        for (final String line : event.getLines()) {
-             event.setLine(lineNumber++, Owoification.owoify(line));
+        final Player p = event.getPlayer();
+        if((p.hasPermission("owoifier.use.sign") && getConfig().getBoolean("use_perms"))||!getConfig().getBoolean("use_perms")) {
+            int lineNumber = 0;
+            for (final String line : event.getLines()) {
+                event.setLine(lineNumber++, Owoification.owoify(line));
+            }
         }
     }
 }
