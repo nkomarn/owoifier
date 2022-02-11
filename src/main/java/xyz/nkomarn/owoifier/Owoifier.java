@@ -11,13 +11,6 @@ import xyz.nkomarn.owoifier.util.Owoification;
 import java.util.Random;
 
 public class Owoifier extends JavaPlugin implements Listener {
-    final String[] expressions = {
-            ">_<", ":3", "ʕʘ‿ʘʔ", ":D", "._.",
-            ";3", "xD", "ㅇㅅㅇ", "(人◕ω◕)",
-            ">_>", "ÙωÙ", "UwU", "OwO", ":P",
-            "(◠‿◠✿)", "^_^", ";_;", "XDDD",
-            "x3", "(• o •)", "<_<"
-    };
 
     public void onEnable() {
         saveDefaultConfig();
@@ -29,7 +22,7 @@ public class Owoifier extends JavaPlugin implements Listener {
         final Player p = event.getPlayer();
         if((p.hasPermission("owoifier.use.chat") && getConfig().getBoolean("use_perms"))||!getConfig().getBoolean("use_perms")) {
             final Random random = new Random();
-            final String expression = expressions[random.nextInt(expressions.length)];
+            final String expression = Owoification.EXPRESSIONS[random.nextInt(Owoification.EXPRESSIONS.length)];
             event.setMessage(Owoification.owoify(event.getMessage()) + " " + expression);
         }
     }
